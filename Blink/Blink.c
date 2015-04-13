@@ -9,11 +9,18 @@
 
 
 #include <avr/io.h>
+#include "BitManip.h"
+
+#define TEST_PIN (1<<PA0)
 
 int main(void)
 {
+  /* Configure pin as output */
+  DDRA = TEST_PIN;
+
+  sbm(PORTA, TEST_PIN);
+
   while(1)
   {
-    //TODO:: Please write your application code
   }
 }
