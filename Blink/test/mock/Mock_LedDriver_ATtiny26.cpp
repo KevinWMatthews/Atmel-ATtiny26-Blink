@@ -13,23 +13,19 @@ int DDRA = 0;
 int PORTA = 0;
 
 //*** Mock all wiringATtiny26 functions that are used by the test and production code ***//
-
 void LedDriver_Setup(void)
 {
-  mock().actualCall("LedDriver_Setup");
   DDRA = PA0;
   PORTA = 0;
 }
 
 void LedDriver_On(int led)
 {
-  mock().actualCall("LedDriver_On");
   PORTA = led;
 }
 
 void LedDriver_Off(int led)
 {
-  mock().actualCall("LedDriver_Off");
   PORTA = 0;
 }
 
