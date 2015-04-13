@@ -3,3 +3,7 @@
 
 #Ignore user-specific Atmel 6 Visual Studio files
 *.atsuo
+
+#Ignore results of CppUTest test build
+*/test/build/
+*/test/obj/
