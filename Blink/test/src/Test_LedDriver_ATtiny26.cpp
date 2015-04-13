@@ -40,6 +40,17 @@ TEST(Test_LedDriver_ATtiny26, TurnLedOn)
   mock().checkExpectations();
 }
 
+TEST(Test_LedDriver_ATtiny26, TurnLedOff)
+{
+  // Turn the LED  on first so we're sure that it goes off
+  mock().expectOneCall("LedDriver_On");
+  LedDriver_On(LED1);
+
+  mock().expectOneCall("LedDriver_Off");
+  LedDriver_Off(LED1);
+  LONGS_EQUAL(0, LedDriverSpy_PORTA());
+  mock().checkExpectations();
+}
 
 // TEST(Test_LedDriver_ATtiny26, Setup)
 // {

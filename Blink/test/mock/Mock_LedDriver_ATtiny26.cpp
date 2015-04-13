@@ -27,6 +27,12 @@ void LedDriver_On(int led)
   PORTA = led;
 }
 
+void LedDriver_Off(int led)
+{
+  mock().actualCall("LedDriver_Off");
+  PORTA = 0;
+}
+
 // void pinMode_Gpio1(int pin, gpioMode mode)
 // {
 //   mock().actualCall("pinMode_Gpio1")
