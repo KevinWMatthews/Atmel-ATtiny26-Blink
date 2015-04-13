@@ -27,8 +27,19 @@ TEST(Test_LedDriver_ATtiny26, Setup)
 
   LedDriver_Setup();
   LONGS_EQUAL(PA0, LedDriverSpy_DDRA());
+  LONGS_EQUAL(0, LedDriverSpy_PORTA());
   mock().checkExpectations();
 }
+
+TEST(Test_LedDriver_ATtiny26, TurnLedOn)
+{
+  mock().expectOneCall("LedDriver_On");
+
+  LedDriver_On(LED1);
+  LONGS_EQUAL(PA0, LedDriverSpy_PORTA());
+  mock().checkExpectations();
+}
+
 
 // TEST(Test_LedDriver_ATtiny26, Setup)
 // {

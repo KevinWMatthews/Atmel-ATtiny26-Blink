@@ -18,6 +18,13 @@ void LedDriver_Setup(void)
 {
   mock().actualCall("LedDriver_Setup");
   DDRA = PA0;
+  PORTA = 0;
+}
+
+void LedDriver_On(int led)
+{
+  mock().actualCall("LedDriver_On");
+  PORTA = led;
 }
 
 // void pinMode_Gpio1(int pin, gpioMode mode)
@@ -51,4 +58,7 @@ int LedDriverSpy_DDRA(void)
   return DDRA;
 }
 
-
+int LedDriverSpy_PORTA(void)
+{
+  return PORTA;
+}
