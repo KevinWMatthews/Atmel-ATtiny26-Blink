@@ -1,0 +1,5 @@
+#Ignore Debug folder
+*/Debug/
+
+#Ignore user-specific Atmel 6 Visual Studio files
+*.atsuo
