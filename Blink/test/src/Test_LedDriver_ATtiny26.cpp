@@ -1,13 +1,12 @@
 extern "C"
 {
   #include "LedDriver.h"        // Code under test
-  // #include "wiringATtiny26.h"    // This is mocked
-  // #include "HwSetupATtiny26.h"   // Supporting definitions
 }
 
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
 #include "Test_LedDriver_ATtiny26.h"
+#include "Mock_LedDriver_ATtiny26.h"
 
 TEST_GROUP(Test_LedDriver_ATtiny26)
 {
@@ -24,7 +23,11 @@ TEST_GROUP(Test_LedDriver_ATtiny26)
 //*** The Tests! ***//
 TEST(Test_LedDriver_ATtiny26, Setup)
 {
-  FAIL("Tests wired properly!");
+  mock().expectOneCall("LedDriver_Setup");
+
+  LedDriver_Setup();
+  LONGS_EQUAL(PA0, LedDriverSpy_DDRA());
+  mock().checkExpectations();
 }
 
 // TEST(Test_LedDriver_ATtiny26, Setup)

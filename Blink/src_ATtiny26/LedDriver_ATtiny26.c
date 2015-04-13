@@ -2,6 +2,11 @@
 #include <avr/io.h>
 #include "BitManip.h"
 
+void LedDriver_Setup(void)
+{
+  DDRA = PA0;
+}
+
 void LedDriver_On(int pin)
 {
   sbi(PORTA, pin);

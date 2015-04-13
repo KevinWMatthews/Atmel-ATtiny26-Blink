@@ -21,7 +21,7 @@ CPPUTEST_LIB_LIST=CppUTest CppUTestExt
 
 # User unit tests
 TEST_DIR=test
-TEST_SRC_DIRS=$(TEST_DIR)/src $(TEST_DIR)/mocks
+TEST_SRC_DIRS=$(TEST_DIR)/src $(TEST_DIR)/mock
 TEST_INC_DIR=$(TEST_DIR)/inc
 TEST_LIB_DIRS=$(TEST_DIR)/lib
 #Static library names without lib prefix and .a suffix
