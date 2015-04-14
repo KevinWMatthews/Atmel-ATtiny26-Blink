@@ -3,6 +3,8 @@ ifndef SILENCE
 	SILENCE =
 endif
 
+OSTYPE:=$(shell uname -o)
+
 ### Directory structure ###
 # Output file
 TARGET_NAME=Blink
@@ -18,6 +20,10 @@ OBJ_DIR=obj
 
 # CppUTest test harness source code
 CPPUTEST_LIB_LIST=CppUTest CppUTestExt
+ifeq ("$(OSTYPE)","Cygwin")
+# Cygwin's linker can't seem to find CppUTest libraries even though they're in the PATH...
+CPPUTEST_LIB_DIR=/usr/local/lib
+endif
 
 # User unit tests
 TEST_DIR=test

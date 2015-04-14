@@ -36,6 +36,9 @@ TEST_LINKER_FLAGS+=$(addprefix -l,$(TEST_LIB_LIST))
 
 #Flags for CppUTest test harness source code
 CPPUTEST_LINKER_FLAGS=$(addprefix -l,$(CPPUTEST_LIB_LIST))
+ifeq ("$(OSTYPE)","Cygwin")
+CPPUTEST_LINKER_FLAGS+=$(addprefix -L,$(CPPUTEST_LIB_DIR))
+endif
 
 #Flags for archive tool
 ifdef SILENCE
