@@ -17,47 +17,22 @@ void LedDriver_Setup(void)
 {
   DDRA = 0;
   DDRA |= (1<<LED1);
-  // DDRA |= (1<<LED2);
-  // DDRA |= (1<<LED3);
-  // DDRA |= (1<<LED4);
-  // DDRA |= (1<<LED5);
+  DDRA |= (1<<LED2);
+  DDRA |= (1<<LED3);
+  DDRA |= (1<<LED4);
+  DDRA |= (1<<LED5);
   PORTA = 0;
 }
 
 void LedDriver_On(int led)
 {
-  PORTA = led;
+  PORTA |= (1<<led);
 }
 
 void LedDriver_Off(int led)
 {
-  PORTA = 0;
+  PORTA &= ~(1<<led);
 }
-
-// void pinMode_Gpio1(int pin, gpioMode mode)
-// {
-//   mock().actualCall("pinMode_Gpio1")
-//         .withParameter("p1", pin)
-//         .withParameter("p2", mode);
-// }
-
-// void setPin_Gpio1(int pin)
-// {
-//   mock().actualCall("setPin_Gpio1")
-//         .withParameter("p1", pin);
-// }
-
-// void clearPin_Gpio1(int pin)
-// {
-//   mock().actualCall("clearPin_Gpio1")
-//         .withParameter("p1", pin);
-// }
-
-// void delay(int n)
-// {
-//   mock().actualCall("delay")
-//         .withParameter("p1", n);
-// }
 
 //*** Spy on ATtiny26's "memory" ***/
 int LedDriverSpy_DDRA(int bit)
@@ -65,7 +40,7 @@ int LedDriverSpy_DDRA(int bit)
   return ((1<<bit) & DDRA) && 1;
 }
 
-int LedDriverSpy_PORTA(void)
+int LedDriverSpy_PORTA(int bit)
 {
-  return PORTA;
+  return ((1<<bit) & PORTA) && 1;
 }
