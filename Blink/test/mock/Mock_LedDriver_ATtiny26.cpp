@@ -1,6 +1,7 @@
 extern "C"
 {
   #include "LedDriver.h"
+  #include "BitManip.h"
 }
 
 #include "CppUTest/TestHarness.h"
@@ -16,31 +17,31 @@ int PORTA = 0;
 void LedDriver_Setup(void)
 {
   DDRA = 0;
-  DDRA |= (1<<LED1);
-  DDRA |= (1<<LED2);
-  DDRA |= (1<<LED3);
-  DDRA |= (1<<LED4);
-  DDRA |= (1<<LED5);
+  SBI(DDRA, LED1);
+  SBI(DDRA, LED2);
+  SBI(DDRA, LED3);
+  SBI(DDRA, LED4);
+  SBI(DDRA, LED5);
   PORTA = 0;
 }
 
 void LedDriver_On(int led)
 {
-  PORTA |= (1<<led);
+  SBI(PORTA, led);
 }
 
 void LedDriver_Off(int led)
 {
-  PORTA &= ~(1<<led);
+  CBI(PORTA, led);
 }
 
 //*** Spy on ATtiny26's "memory" ***/
 int LedDriverSpy_DDRA(int bit)
 {
-  return ((1<<bit) & DDRA) && 1;
+  return ifbit(DDRA, bit);
 }
 
 int LedDriverSpy_PORTA(int bit)
 {
-  return ((1<<bit) & PORTA) && 1;
+  return ifbit(PORTA, bit);
 }
