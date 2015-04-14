@@ -1,23 +1,30 @@
 #include "LedDriver.h"
+#include "LedDriverWiring_ATtiny26.h"
 #include <avr/io.h>
 #include "BitManip.h"
 
 void LedDriver_Setup(void)
 {
-  DDRA = PA0;
+  DDRA = 0;
+  SBI(DDRA, LED1);
+  SBI(DDRA, LED2);
+  SBI(DDRA, LED3);
+  SBI(DDRA, LED4);
+  SBI(DDRA, LED5);
+  PORTA = 0;
 }
 
-void LedDriver_On(int pin)
+void LedDriver_On(int led)
 {
-  sbi(PORTA, pin);
+  SBI(PORTA, led);
 }
 
-void LedDriver_Off(int pin)
+void LedDriver_Off(int led)
 {
-  cbi(PORTA, pin);
+  CBI(PORTA, led);
 }
 
-void LedDriver_Toggle(int pin, int interval)
+void LedDriver_Toggle(int led, int interval)
 {
   //TODO
 }
