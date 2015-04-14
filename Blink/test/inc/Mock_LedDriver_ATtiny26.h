@@ -15,7 +15,9 @@
 #define LED4 PA6
 #define LED5 PA7
 
-int LedDriverSpy_DDRA(int bit);
-int LedDriverSpy_PORTA(int bit);
+int LedDriverSpy_DDRA(void);
+int LedDriverSpy_DDRAbit(int bit);
+int LedDriverSpy_PORTA(void);
+int LedDriverSpy_PORTAbit(int bit);
 
 #endif

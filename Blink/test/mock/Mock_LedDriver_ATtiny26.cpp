@@ -36,12 +36,22 @@ void LedDriver_Off(int led)
 }
 
 //*** Spy on ATtiny26's "memory" ***/
-int LedDriverSpy_DDRA(int bit)
+int LedDriverSpy_DDRA(void)
+{
+  return DDRA;
+}
+
+int LedDriverSpy_DDRAbit(int bit)
 {
   return ifbit(DDRA, bit);
 }
 
-int LedDriverSpy_PORTA(int bit)
+int LedDriverSpy_PORTA(void)
+{
+  return PORTA;
+}
+
+int LedDriverSpy_PORTAbit(int bit)
 {
   return ifbit(PORTA, bit);
 }
